@@ -1,0 +1,15 @@
+{
+  "name": "missus-chat-webcomponents-socket-io",
+  "version": "1.0.0",
+  "description": "Chat socket io and web components",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "Leonardo Tosetto",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}
