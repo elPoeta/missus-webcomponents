@@ -1,6 +1,7 @@
 import "../components/chat-room.js";
 import "../components/online-users.js";
-const socket = io.connect("http://localhost:5000");
+//const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://missus-app.herokuapp.com");
 console.log("connected");
 const error = document.querySelector("#error");
 const userName = document.querySelector("#userName");
