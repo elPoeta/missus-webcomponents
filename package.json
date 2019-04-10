@@ -4,6 +4,8 @@
   "description": "Chat socket io and web components",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "build": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "Leonardo Tosetto",
