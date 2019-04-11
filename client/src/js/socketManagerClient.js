@@ -1,7 +1,7 @@
 import "../components/chat-room.js";
 import "../components/online-users.js";
-//const socket = io.connect("http://localhost:5000");
-const socket = io.connect("https://missus-app.herokuapp.com");
+const socket = io.connect("http://localhost:5000");
+//const socket = io.connect("https://missus-app.herokuapp.com");
 console.log("connected");
 const error = document.querySelector("#error");
 const userName = document.querySelector("#userName");
@@ -31,6 +31,10 @@ submitUser.addEventListener("click", e => {
 
           chatRoom.clearMessage();
         });
+        chatRoom.addEventListener('typing', e => {
+          console.log('send is typing ', user);
+          socket.emit('typing', user);
+        })
       }
     });
   } else {
@@ -51,3 +55,9 @@ socket.on("get users", data => {
   //el.online = data
   //main.appendChild(el);
 });
+
+socket.on('typing', data => {
+  console.log('recive typing ', data);
+  // const el = document.querySelector("chat-room");
+  chatRoom.typingMessage = data;
+})

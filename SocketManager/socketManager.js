@@ -23,7 +23,10 @@ module.exports = io => {
       console.log("msg", message);
       io.sockets.emit("get message", message);
     });
-
+    socket.on("typing", data => {
+      console.log('is typing broadcast ', data);
+      socket.broadcast.emit("typing", data);
+    })
     function updateUsers() {
       io.sockets.emit("get users", users);
     }

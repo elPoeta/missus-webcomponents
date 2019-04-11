@@ -66,13 +66,14 @@ class ChatRoom extends HTMLElement {
     this.shadowRoot
       .querySelector("#send")
       .addEventListener("click", this._sendMessage);
+    this.shadowRoot.querySelector('#message').addEventListener('keypress', this._typing);
   }
 
   set title(user) {
     console.log(user);
     this.shadowRoot.querySelector("#welcome").textContent = `Welcome!! ${
       user.user
-    }`;
+      }`;
   }
 
   set users(users) {
@@ -90,6 +91,12 @@ class ChatRoom extends HTMLElement {
       this.dispatchEvent(sendEvent);
     }
   };
+  _typing = e => {
+    console.log('keyup ', e.key);
+    const typingEvent = new Event('typing');
+    this.dispatchEvent(typingEvent);
+
+  }
   set msg(msg) {
     console.log("m@ ", msg);
     const li = document.createElement("li");
@@ -101,7 +108,9 @@ class ChatRoom extends HTMLElement {
     li.appendChild(p);
     this.shadowRoot.querySelector("#chat").appendChild(li);
   }
-
+  set typingMessage(data) {
+    console.log(`typingMessage :: ${data} is typing...`);
+  }
   clearMessage() {
     this.message = "";
     this.shadowRoot.querySelector("#message").value = "";
